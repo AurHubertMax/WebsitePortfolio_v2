@@ -3,6 +3,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --bg_1: #091833;
+  --bg_2: #133e7c;
+  --bg_3: #711c91;
+
+  --acc_1: #ea00d9;
+  --acc_2: #0abdc6;
 }
 
 @theme inline {
@@ -20,7 +27,16 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  height: 100vh;
+}
+
+body > :first-child {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
 }
