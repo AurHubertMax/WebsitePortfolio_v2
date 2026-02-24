@@ -1,12 +1,23 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Major+Mono+Display&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
 @import "tailwindcss";
+
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
 
   --bg_1: #091833;
+  --bg_1_rgb: 9, 24, 51;
+
   --bg_2: #133e7c;
+  --bg_2_rgb: 19, 62, 124;
+
+  --bg_4: #0a1427;
+  --bg_4_rgb: 10, 20, 39;
+
   --bg_3: #711c91;
+  --bg_3_rgb: 113, 28, 145;
 
   --acc_1: #ea00d9;
   --acc_2: #0abdc6;
@@ -26,17 +37,15 @@
   }
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  position: relative;
-  height: 100vh;
+html {
+  scroll-behavior: smooth;
 }
 
-body > :first-child {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100vw;
+body {
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: "Sacramento", sans-serif;
+  position: relative;
   height: 100vh;
-  z-index: -1;
+  background: var(--bg_1);
 }
+

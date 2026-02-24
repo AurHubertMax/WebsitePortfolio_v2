@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./layout.css";
-import { GradFlow } from 'gradflow'
 
 import BackgroundGradient from "./src/components/BackgroundGradient";
 
@@ -31,14 +30,23 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <BackgroundGradient />
+        {/* <BackgroundGradient /> */}
         <div className="header">
           <div className="header-left">
-            <a href="/home">Aureliano Hubert Maximus</a>
+            <a href="#home">
+              <div className="neonText">Aureliano Hubert Maximus</div>
+            </a>
           </div>
           <div className="header-right">
-            <a href="/page1">About</a>
-            <a href="/page3">Contact</a>
+            <a href="#resume">
+              <div className="neonText">Resume</div>
+            </a>
+            <a href="#projects">
+              <div className="neonText">Projects</div>
+            </a>
+            <a href="#contact">
+              <div className="neonText">Contact</div>
+            </a>
           </div>
         </div>
         {children}
