@@ -1,25 +1,20 @@
 import Image from "next/image";
+
+import HomeSection from "./src/HomeSection.tsx";
 import ResumeSection from "./src/ResumeSection.tsx";
+import ProjectsSection from "./src/ProjectsSection.tsx";
+import ContactSection from "./src/ContactSection.tsx";
 
 export default function Home() {
   return (
     <main>
-      <section id="home" style={{ minHeight: '100vh', padding: '10rem 2rem 2rem 2rem'}}>
-        <h1>Home Section</h1>
-        <p>Welcome content here...</p>
-      </section>
+      <HomeSection />
 
       <ResumeSection />
 
-      <section id="projects" style={{ minHeight: '100vh', padding: '10rem 2rem 2rem 2rem' }}>
-        <h1>Projects Section</h1>
-        <p>Projects content here...</p>
-      </section>
+      <ProjectsSection />
 
-      <section id="contact" style={{ minHeight: '100vh', padding: '10rem 2rem 2rem 2rem' }}>
-        <h1>Contact Section</h1>
-        <p>Contact content here...</p>
-      </section>
+      <ContactSection />
     </main>
   );
 }

@@ -4,6 +4,8 @@ import "./globals.css";
 import "./layout.css";
 
 import BackgroundGradient from "./src/components/BackgroundGradient";
+import Sun from "./src/components/Sun";
+import Hills from "./src/components/Hills";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,26 +32,31 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* <BackgroundGradient /> */}
+        <BackgroundGradient />
+        <Sun />
+        <Hills />
+        
         <div className="header">
           <div className="header-left">
             <a href="#home">
-              <div className="neonText">Aureliano Hubert Maximus</div>
+              <div className="navText">Aureliano Hubert Maximus</div>
             </a>
           </div>
           <div className="header-right">
             <a href="#resume">
-              <div className="neonText">Resume</div>
+              <div className="navText">Resume</div>
             </a>
             <a href="#projects">
-              <div className="neonText">Projects</div>
+              <div className="navText">Projects</div>
             </a>
             <a href="#contact">
-              <div className="neonText">Contact</div>
+              <div className="navText">Contact</div>
             </a>
           </div>
         </div>
-        {children}
+        <div className="content-wrapper">
+          {children}
+        </div>
       </body>
     </html>
   );

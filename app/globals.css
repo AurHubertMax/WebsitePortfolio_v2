@@ -21,6 +21,11 @@
 
   --acc_1: #ea00d9;
   --acc_2: #0abdc6;
+
+  --sunrise-dark: #ff4d00;
+  --sunrise-light: #f4bcb3;
+  --sunrise-lightest: #75bffe;
+
 }
 
 @theme inline {
@@ -46,6 +51,7 @@ body {
   font-family: "Sacramento", sans-serif;
   position: relative;
   height: 100vh;
-  background: var(--bg_1);
+  /* background: var(--bg_1); */
+  overflow-x: hidden;
 }
 

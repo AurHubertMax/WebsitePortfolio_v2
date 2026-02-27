@@ -1,10 +1,26 @@
 "use client"
 
 import { GradFlow } from 'gradflow'
+import {useEffect, useState} from 'react';
+
 import "../../globals.css";
-import { config } from 'process';
 
 export default function BackgroundGradient() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scroll = window.scrollY;
+            const progress = scrollHeight > 0 ? (scroll / scrollHeight) * 100 : 0;
+            setScrollProgress(progress);
+            console.log("Scroll Progress:", scrollProgress);
+        }
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
   return (
     <div style={{
       position: 'fixed',
@@ -16,12 +32,12 @@ export default function BackgroundGradient() {
       pointerEvents: 'none'
     }}>
       <GradFlow config={{
-          color1: { r: 9, g: 24, b: 51 },
-          color2: { r: 19, g: 62, b: 124 },
-          color3: { r: 10, g: 20, b: 39 },
+          color1: { r: 117, g: 191, b: 254 },
+          color2: { r: 244, g: 188, b: 179 },
+          color3: { r: 255, g: 77, b: 0 },
           speed: 1,
-          scale: 1.3,
-          type: 'stripe',
+          scale: scrollProgress / 100 * 2,
+          type: 'linear',
           noise: 0
         }}/>
     </div>
