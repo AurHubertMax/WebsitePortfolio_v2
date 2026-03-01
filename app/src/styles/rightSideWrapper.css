@@ -1,0 +1,116 @@
+.right-side-container {
+    display: flex;
+    flex-direction: column;
+    width: calc(50vw - 4rem);
+    height: calc(100vh - 8rem);
+    position: fixed;
+    top: 4rem;
+    right: 4rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+    background-color: green;
+}
+
+.right-side-container::-webkit-scrollbar {
+    display: none;
+}
+
+.content-wrapper {
+    direction: ltr;
+    width: 100%;
+}
+
+.custom-scrollbar {
+    position: fixed;
+    top: 10rem;
+    left: calc(50vw - 4rem);
+    height: calc(100vh - 20rem);
+    width: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.scrollbar-track {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 1;
+}
+
+.scrollbar-thumb {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 16px;
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+    transition: transform 0.15s ease-out;
+    transform: translateX(-50%) translateY(0px);
+    z-index: 2;
+}
+
+.scrollbar-node {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    z-index: 3;
+    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scrollbar-node:hover {
+    background: white;
+    border-color: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
+    animation: pulse-glow-scroll 2s ease-in-out infinite;
+}
+
+.scrollbar-node.active {
+    background: white;
+    border-color: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
+    animation: pulse-glow-scroll 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow-scroll {
+    0%, 100% {
+        box-shadow: 
+            0 0 10px rgba(255, 255, 255, 0.6),
+            0 0 20px rgba(255, 255, 255, 0.3),
+            0 0 30px rgba(255, 255, 255, 0.1);
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        box-shadow: 
+            0 0 20px rgba(255, 255, 255, 1),
+            0 0 40px rgba(255, 255, 255, 0.6),
+            0 0 60px rgba(255, 255, 255, 0.3),
+            0 0 80px rgba(255, 255, 255, 0.1);
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .right-side-container {
+        width: calc(65vw - 4rem);
+    }
+
+    .custom-scrollbar {
+        left: calc(30vw);
+    }
+}

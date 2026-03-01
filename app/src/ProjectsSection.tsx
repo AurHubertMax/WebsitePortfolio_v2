@@ -1,6 +1,6 @@
 export default function ProjectsSection() {
   return (
-    <section id="projects" style={{ minHeight: '100vh', padding: '10rem 2rem 2rem 2rem' }}>
+    <section id="projects" style={{ minHeight: '100vh', color: 'white' }}>
       <h1>Projects Section</h1>
       <p>Projects content here...</p>
     </section>

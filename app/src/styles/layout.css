@@ -1,0 +1,306 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Fira+Code:wght@300..700&family=Lekton:ital,wght@0,400;0,700;1,400&family=Major+Mono+Display&family=Syncopate:wght@400;700&display=swap'); */
+
+.mask {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index: -10;
+    overflow: hidden;
+}
+
+.tab-container {
+    position: fixed;
+    top: 1.5rem;
+    left: 3.15rem;
+    width: 15rem;
+    height: 1.5rem;
+    
+}
+
+.tab1 {
+    position: fixed;
+    width: 8rem;
+    height: 1.5rem;
+    background-color: white;
+    clip-path: polygon(80% 0, 80% 0, 100% 100%, 0% 100%);
+}
+
+.tab2 {
+    position: fixed;
+    top: 2.2rem;
+    left: 7.5rem;
+    width: 4rem;
+    height: 0.8rem;
+    clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
+    background-color: white;
+}
+
+.tab3 {
+    position: fixed;
+    top: 2.2rem;
+    left: 11.5rem;
+    width: 1rem;
+    height: 0.8rem;
+    clip-path: polygon(0 0, 65% 0, 100% 100%, 35% 100%);
+    background-color: white;}
+
+.faulty-terminal-container {
+  position: fixed;
+  overflow: hidden;
+  z-index: -1;
+  top: 3rem;
+  left: 3rem;
+  right: 3rem;
+  bottom: 3rem;
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 3px;
+}
+
+.left-side-container {
+    /* background-color: gray; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(45vw - 5rem);
+    height: calc(100vh - 10rem);
+    position: fixed;
+    top: 5rem;
+    left: 5rem;
+    /* overflow: hidden; */
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.header-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: calc(45vw - 5rem);
+    /* position: inherit;
+    top: 13rem;
+    left: 5rem; */
+}
+
+.kode-mono {
+  font-family: "Kode Mono", monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+
+.navTitle {
+    color: white;
+    font-size: 2rem;
+    font-weight: 200;
+    font-style: normal;
+    letter-spacing: 0.15rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    animation: pulse-glow 3s ease-in-out infinite;
+    text-wrap: nowrap;
+}
+
+.short-name {
+    display: none;
+}
+
+.subtitle {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 200;
+    opacity: 0.7;
+    margin-top: -0.5rem;
+}
+
+.short-subtitle {
+    display: none;
+}
+
+.text-block {
+  margin: 7vw;
+  max-width: 800px;
+  font-size: clamp(14px, 4vw, 32px);
+  color: #fff;
+}
+
+.char {
+  will-change: transform;
+  display: inline-block;
+}
+
+.navText {
+    display: inline-block;
+    color: white;
+    letter-spacing: 0.15rem;
+    font-weight: 100;
+    font-size: 1rem;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    transition: transform 0.2s ease-out, text-shadow 0.2s ease-out;
+
+}
+
+.navText:hover {
+    transform: skewX(-10deg) scale(1.05);
+    text-shadow: 
+        0 0 8px rgba(255, 255, 255, 0.9),
+        0 0 20px rgba(255, 255, 255, 0.6),
+        0 0 40px rgba(255, 255, 255, 0.3);
+}
+
+.navText.active {
+    transform: skewX(-10deg) scale(1.05);
+    text-shadow: 
+        0 0 8px rgba(255, 255, 255, 0.9),
+        0 0 20px rgba(255, 255, 255, 0.6),
+        0 0 40px rgba(255, 255, 255, 0.3);
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+
+.underline-hover {
+  display: inline-block;
+  position: relative;
+}
+
+.underline-hover:after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: auto;
+  bottom: -2px;
+  width: 0;
+  height: 0.1rem;
+  background: var(--acc);
+  border-radius: 2px;
+  transition: width 0.1s ease-out;
+  z-index: -1;
+} 
+
+.underline-hover:before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 0.1rem;
+  border-left: 0.1rem solid var(--acc);
+  border-right: 0.1rem solid var(--acc);
+  background: transparent;
+  transition: width 0.1s ease-out;
+}
+
+.underline-hover:hover:after {
+  width: calc(100% - 8px);
+  scale: 1.05;
+}
+
+.underline-hover:hover:before {
+  width: 100%;
+}
+
+.underline-hover.active:after {
+  width: calc(100% - 8px);
+  scale: 1.05;
+  animation: pulse-underline 2s ease-in-out infinite;
+}
+
+.underline-hover.active:before {
+  width: 100%;
+  animation: pulse-underline-border 2s ease-in-out infinite;
+}
+
+.social-media-container {
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.social-media-icon {
+    width: 2rem;
+    height: 2rem;
+    color: white;
+    transition: transform 0.1s ease-out, filter 0.3s ease-out;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+}
+
+.social-media-icon:hover {
+    transform: scale(1.2);
+    filter: 
+        drop-shadow(0 0 6px rgba(255, 255, 255, 0.9))
+        drop-shadow(0 0 12px rgba(255, 255, 255, 0.6))
+        drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        text-shadow: 
+            0 0 8px rgba(255, 255, 255, 0.6),
+            0 0 20px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        text-shadow: 
+            0 0 15px rgba(255, 255, 255, 0.9),
+            0 0 40px rgba(255, 255, 255, 0.5),
+            0 0 60px rgba(255, 255, 255, 0.2);
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .header {
+        gap: 1rem;
+    }
+    .navTitle {
+        font-size: 1.5rem;
+        letter-spacing: 0.1rem;
+    }
+    .subtitle {
+        font-size: 0.8rem;
+    }
+    .navText {
+        font-size: 0.9rem;
+        letter-spacing: 0.1rem;
+    }
+    .left-side {
+        width: calc(45vw - 4rem);
+        height: calc(100vh - 8rem);
+        top: 4rem;
+        left: 4rem;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .header {
+        gap: 0.8rem;
+    }
+    .navTitle {
+        font-size: 1.2rem;
+        letter-spacing: 0.05rem;
+    }
+    .long-subtitle {
+        display: none;
+    }
+    .short-subtitle {
+        display: block;
+    }
+    .navText {
+        font-size: 0.8rem;
+        letter-spacing: 0.05rem;
+    }
+
+    .full-name {
+        display: none;
+    }
+
+    .short-name {
+        display: block;
+    }
+}

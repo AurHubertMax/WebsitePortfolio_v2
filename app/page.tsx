@@ -1,13 +1,11 @@
-import Image from "next/image";
-
-import HomeSection from "./src/HomeSection.tsx";
-import ResumeSection from "./src/ResumeSection.tsx";
-import ProjectsSection from "./src/ProjectsSection.tsx";
-import ContactSection from "./src/ContactSection.tsx";
+import HomeSection from "./src/HomeSection";
+import ResumeSection from "./src/ResumeSection";
+import ProjectsSection from "./src/ProjectsSection";
+import ContactSection from "./src/ContactSection";
 
 export default function Home() {
   return (
-    <main>
+    <main style={{}}>
       <HomeSection />
 
       <ResumeSection />
