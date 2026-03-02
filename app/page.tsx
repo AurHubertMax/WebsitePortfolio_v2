@@ -1,3 +1,5 @@
+"use client";
+
 import HomeSection from "./src/HomeSection";
 import ResumeSection from "./src/ResumeSection";
 import ProjectsSection from "./src/ProjectsSection";

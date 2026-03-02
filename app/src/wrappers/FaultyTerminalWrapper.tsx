@@ -32,7 +32,7 @@ export default function FaultyTerminalBackground() {
         mouseReact
         mouseStrength={0.5}
         pageLoadAnimation
-        brightness={0.15}
+        brightness={0.1}
     />
     </div>
   )

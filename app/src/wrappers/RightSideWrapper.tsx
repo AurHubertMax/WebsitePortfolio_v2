@@ -2,7 +2,8 @@
 import { useRef, useEffect } from "react";
 import Scrollbar from "../components/Scrollbar";
 import { useScroll } from "../contexts/ScrollContext";
-import "../../src/styles/rightSideWrapper.css";
+import "../../src/styles/wrappers.css";
+
 
 export default function RightSideWrapper({ children }: { children: React.ReactNode }) {
   const rightSideRef = useRef<HTMLDivElement>(null);
@@ -41,9 +42,11 @@ export default function RightSideWrapper({ children }: { children: React.ReactNo
           sectionIds={["home", "resume", "projects", "contact"]}
       />
       <div className="right-side-container kode-mono" ref={rightSideRef}>
+          <div className="blur-top" />
           <div className="content-wrapper">
-              {children}
+            {children}
           </div>
+          <div className="blur-bottom" />
       </div>
     </>
   );

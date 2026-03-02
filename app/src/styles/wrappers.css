@@ -15,7 +15,7 @@
     overflow-x: hidden;
     overflow-y: auto;
     scrollbar-width: none;
-    background-color: green;
+    /* background-color: green; */
 }
 
 .right-side-container::-webkit-scrollbar {
@@ -25,6 +25,42 @@
 .content-wrapper {
     direction: ltr;
     width: 100%;
+}
+
+.blur-top {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8rem;
+    pointer-events: none;
+    z-index: 10;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.8) 25%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0.2) 75%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+.blur-bottom {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 8rem;
+    pointer-events: none;
+    z-index: 10;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.8) 25%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0.2) 75%,
+        rgba(0, 0, 0, 0) 100%
+    );
 }
 
 .custom-scrollbar {
@@ -91,6 +127,38 @@
     border-color: white;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
     animation: pulse-glow-scroll 2s ease-in-out infinite;
+}
+
+.gradual-blur-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.gradual-blur-inner > div {
+  -webkit-backdrop-filter: inherit;
+  backdrop-filter: inherit;
+}
+
+.gradual-blur {
+  isolation: isolate;
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .gradual-blur-inner > div {
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0.5;
+  }
+}
+
+.gradual-blur-fixed {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1000;
 }
 
 @keyframes pulse-glow-scroll {
