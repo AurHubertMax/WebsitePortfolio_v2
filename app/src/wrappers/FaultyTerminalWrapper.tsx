@@ -1,6 +1,6 @@
 "use client"
 
-import FaultyTerminal from './FaultyTerminal';
+import FaultyTerminal from '../components/FaultyTerminal';
 
 import "../../globals.css";
 

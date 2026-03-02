@@ -14,6 +14,7 @@ export interface ScrambledTextProps {
   scrambleChars?: string;
   className?: string;
   style?: React.CSSProperties;
+  disableHover?: boolean;
   children: React.ReactNode;
 }
 
@@ -24,6 +25,7 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
   scrambleChars = '.:',//'.:',
   className = '',
   style = {},
+  disableHover = false,
   children
 }) => {
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -116,10 +118,15 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
     };
 
     const el = rootRef.current;
-    el.addEventListener('pointermove', handleMove);
+    if (!disableHover) {
+      el.addEventListener('pointermove', handleMove);
+    }
+   
 
     return () => {
-      el.removeEventListener('pointermove', handleMove);
+      if (!disableHover) {
+        el.removeEventListener('pointermove', handleMove);
+      }
       split.revert();
     };
   }, [radius, duration, speed, scrambleChars]);

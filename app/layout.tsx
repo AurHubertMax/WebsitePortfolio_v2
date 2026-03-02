@@ -3,10 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./src/styles/layout.css";
 
-import FaultyTerminalBackground from "./src/components/FaultyTerminalComponent";
-import ScrambledText from "./src/components/ScrambleTextComponent";
-import RightSideWrapper from "./src/RightSideWrapper";
-import NavigationLinks from "./src/NavigationLinks";
+import FaultyTerminalBackground from "./src/wrappers/FaultyTerminalWrapper";
+import ScrambledText from "./src/wrappers/ScrambleTextWrapper";
+import RightSideWrapper from "./src/wrappers/RightSideWrapper";
+import NavigationLinks from "./src/components/NavigationLinks";
 
 import { ScrollProvider } from "./src/contexts/ScrollContext";
 
@@ -47,8 +47,6 @@ export default function RootLayout({
             <div className="left-side-container">
               <div className="header">
                 <div className="header-title">
-                  {/* <div className="navTitle">Aureliano Hubert Maximus</div> */}
-
                   <ScrambledText
                     className="navTitle kode-mono full-name"
                     radius={100}
@@ -68,16 +66,29 @@ export default function RootLayout({
                     <span style={{ fontSize: "3rem" }}>A</span>.<span style={{ fontSize: "3rem" }}>H</span>.<span style={{ fontSize: "3rem" }}>M</span>.
                   </ScrambledText>
 
-                  <div className="subtitle long-subtitle kode-mono">
+                  <ScrambledText
+                    className="subtitle long-subtitle kode-mono"
+                    radius={100}
+                    duration={2}
+                    speed={0.5}
+                    scrambleChars=".:"
+                  >
                     Software Engineer • Full Stack Software Developer
-                  </div>
+                  </ScrambledText>
 
-                  <div className="subtitle short-subtitle kode-mono">
+                  <ScrambledText
+                    className="subtitle short-subtitle kode-mono"
+                    radius={100}
+                    duration={2}
+                    speed={0.5}
+                    scrambleChars=".:"
+                  >
                     Software Engineer
-                  </div>
-                  
+                  </ScrambledText>
                 </div>
+
                 <NavigationLinks />
+                
               </div>
               <div className="social-media-container">
                 <a href="https://www.github.com" target="_blank" rel="noopener noreferrer">

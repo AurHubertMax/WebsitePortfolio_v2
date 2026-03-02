@@ -1,6 +1,6 @@
 "use client";
 
-import ScrambledText from './ScrambleText';
+import ScrambledText from '../components/ScrambleText';
   
 export interface ScrambledTextProps {
   radius?: number;

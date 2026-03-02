@@ -1,3 +1,9 @@
+.kode-mono {
+  font-family: "Kode Mono", monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
 .right-side-container {
     display: flex;
     flex-direction: column;

@@ -81,13 +81,11 @@
 .header-nav {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1rem;
     align-items: flex-start;
     justify-content: flex-start;
     width: calc(45vw - 5rem);
-    /* position: inherit;
-    top: 13rem;
-    left: 5rem; */
+    position: relative;
 }
 
 .kode-mono {
@@ -144,77 +142,65 @@
     font-size: 1rem;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
     transition: transform 0.2s ease-out, text-shadow 0.2s ease-out;
-
 }
 
 .navText:hover {
     transform: skewX(-10deg) scale(1.05);
     text-shadow: 
-        0 0 8px rgba(255, 255, 255, 0.9),
-        0 0 20px rgba(255, 255, 255, 0.6),
-        0 0 40px rgba(255, 255, 255, 0.3);
+        0 0 15px rgba(255, 255, 255, 1),
+        0 0 30px rgba(255, 255, 255, 0.8),
+        0 0 60px rgba(255, 255, 255, 0.5);
 }
 
 .navText.active {
     transform: skewX(-10deg) scale(1.05);
     text-shadow: 
-        0 0 8px rgba(255, 255, 255, 0.9),
-        0 0 20px rgba(255, 255, 255, 0.6),
-        0 0 40px rgba(255, 255, 255, 0.3);
-    animation: pulse-glow 2s ease-in-out infinite;
+        0 0 15px rgba(255, 255, 255, 1),
+        0 0 30px rgba(255, 255, 255, 0.8),
+        0 0 60px rgba(255, 255, 255, 0.5);
+    
+    animation: pulse-glow-nav 1.5s ease-in-out infinite;
 }
 
+.nav-selection-box {
+    position: absolute;
+    left: -8px;
+    border-radius: 3px;
+    pointer-events: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --b: 2px;   /* thickness of the border */
+    --c: rgba(255, 255, 255, 0.6);   /* color of the border */
+    --w: 9px;  /* width of border */
+    
 
-.underline-hover {
-  display: inline-block;
-  position: relative;
+    border: var(--b) solid #0000;
+    --_g: #0000 90deg,var(--c) 0;
+    --_p: var(--w) var(--w) border-box no-repeat;
+    background:
+        conic-gradient(from 90deg  at top    var(--b) left  var(--b),var(--_g)) 0    0    / var(--_p),
+        conic-gradient(from 180deg at top    var(--b) right var(--b),var(--_g)) 100% 0    / var(--_p),
+        conic-gradient(from 0deg   at bottom var(--b) left  var(--b),var(--_g)) 0    100% / var(--_p),
+        conic-gradient(from -90deg at bottom var(--b) right var(--b),var(--_g)) 100% 100% / var(--_p);
 }
 
-.underline-hover:after {
-  content: "";
-  position: absolute;
-  left: 4px;
-  right: auto;
-  bottom: -2px;
-  width: 0;
-  height: 0.1rem;
-  background: var(--acc);
-  border-radius: 2px;
-  transition: width 0.1s ease-out;
-  z-index: -1;
-} 
-
-.underline-hover:before {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 0.1rem;
-  border-left: 0.1rem solid var(--acc);
-  border-right: 0.1rem solid var(--acc);
-  background: transparent;
-  transition: width 0.1s ease-out;
+.nav-selection-box::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60%;
 }
 
-.underline-hover:hover:after {
-  width: calc(100% - 8px);
-  scale: 1.05;
-}
-
-.underline-hover:hover:before {
-  width: 100%;
-}
-
-.underline-hover.active:after {
-  width: calc(100% - 8px);
-  scale: 1.05;
-  animation: pulse-underline 2s ease-in-out infinite;
-}
-
-.underline-hover.active:before {
-  width: 100%;
-  animation: pulse-underline-border 2s ease-in-out infinite;
+.nav-selection-box::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60%;
 }
 
 .social-media-container {
@@ -254,10 +240,44 @@
     }
 }
 
-@media screen and (max-width: 1500px) {
-    .header {
-        gap: 1rem;
+@keyframes pulse-glow-nav {
+    0%, 100% {
+        text-shadow: 
+            0 0 15px rgba(255, 255, 255, 1),
+            0 0 30px rgba(255, 255, 255, 0.8),
+            0 0 60px rgba(255, 255, 255, 0.5),
+            0 0 70px rgba(255, 255, 255, 0.2);
+        transform: skewX(-10deg);
+        
     }
+    50% {
+        text-shadow: 
+            0 0 25px rgba(255, 255, 255, 1),
+            0 0 50px rgba(255, 255, 255, 0.9),
+            0 0 80px rgba(255, 255, 255, 0.7),
+            0 0 120px rgba(255, 255, 255, 0.5),
+            0 0 160px rgba(255, 255, 255, 0.3);
+    }
+}
+
+@keyframes pulse-glow-underline {
+    0%, 100% {
+        background: #fff;
+        box-shadow: 
+            0 0 4px rgba(241, 224, 197, 0.6),
+            0 0 10px rgba(241, 224, 197, 0.3);
+    }
+    50% {
+        background: #fff;
+        box-shadow: 
+            0 0 8px rgba(241, 224, 197, 0.9),
+            0 0 20px rgba(241, 224, 197, 0.5),
+            0 0 40px rgba(241, 224, 197, 0.2);
+        transform: skewX(-10deg);
+    }
+}
+
+@media screen and (max-width: 1500px) {
     .navTitle {
         font-size: 1.5rem;
         letter-spacing: 0.1rem;
@@ -274,6 +294,30 @@
         height: calc(100vh - 8rem);
         top: 4rem;
         left: 4rem;
+    }
+}
+
+@keyframes pulse-corner {
+    0%, 100% {
+        border-color: rgba(255, 255, 255, 0.6);
+        box-shadow: 
+            0 0 8px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        border-color: rgba(255, 255, 255, 1);
+        box-shadow: 
+            0 0 15px rgba(255, 255, 255, 0.6),
+            0 0 25px rgba(255, 255, 255, 0.4);
+    }
+}
+
+@keyframes pulse-box {
+    0%, 100% {
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+    }
+    50% {
+        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6))
+                drop-shadow(0 0 25px rgba(255, 255, 255, 0.4));
     }
 }
 
