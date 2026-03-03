@@ -48,7 +48,7 @@ export default function RootLayout({
               <div className="header">
                 <div className="header-title">
                   <ScrambledText
-                    className="navTitle kode-mono full-name"
+                    className="navTitle kode-mono black-blur full-name"
                     radius={100}
                     duration={2}
                     speed={0.5}
@@ -57,7 +57,7 @@ export default function RootLayout({
                     <span style={{ fontSize: "3rem" }}>A</span>ureliano <span style={{ fontSize: "3rem" }}>H</span>ubert <span style={{ fontSize: "3rem" }}>M</span>aximus
                   </ScrambledText>
                   <ScrambledText
-                    className="navTitle kode-mono short-name"
+                    className="navTitle kode-mono black-blur short-name"
                     radius={100}
                     duration={2}
                     speed={0.5}
@@ -67,7 +67,7 @@ export default function RootLayout({
                   </ScrambledText>
 
                   <ScrambledText
-                    className="subtitle long-subtitle kode-mono"
+                    className="subtitle long-subtitle black-blur kode-mono"
                     radius={100}
                     duration={2}
                     speed={0.5}

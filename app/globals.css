@@ -3,32 +3,11 @@
 
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --green-acc-light: 168, 207, 157;
+  --green-acc-medium: 95, 136, 96;
+  --green-acc-dark: 73, 106, 74;
 
-  --bg_1: #091833;
-  --bg_1_rgb: 9, 24, 51;
-
-  --bg_2: #133e7c;
-  --bg_2_rgb: 19, 62, 124;
-
-  --bg_4: #0a1427;
-  --bg_4_rgb: 10, 20, 39;
-
-  --bg_3: #711c91;
-  --bg_3_rgb: 113, 28, 145;
-
-  --acc_1: #ea00d9;
-  --acc_2: #0abdc6;
-
-  --sunrise-dark: #ff4d00;
-  --sunrise-light: #f4bcb3;
-  --sunrise-lightest: #75bffe;
-
-  --bg-tint: #A7EF9E;
-  /* #A7EF9E */
-
-  --acc: #f1e0c5;
+  --white: 255, 255, 255;
 
 }
 

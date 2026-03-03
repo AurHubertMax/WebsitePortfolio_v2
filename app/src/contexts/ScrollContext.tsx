@@ -9,7 +9,7 @@ interface ScrollContextType {
 const ScrollContext = createContext<ScrollContextType | undefined>(undefined);
 
 export function ScrollProvider({ children }: { children: ReactNode }) {
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState("landing");
 
   return (
     <ScrollContext.Provider value={{ activeSection, setActiveSection }}>

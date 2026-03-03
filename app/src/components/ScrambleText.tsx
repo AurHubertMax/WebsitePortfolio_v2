@@ -15,6 +15,7 @@ export interface ScrambledTextProps {
   className?: string;
   style?: React.CSSProperties;
   disableHover?: boolean;
+  InfiniteScramble?: boolean;
   children: React.ReactNode;
 }
 
@@ -26,11 +27,13 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
   className = '',
   style = {},
   disableHover = false,
+  InfiniteScramble = false,
   children
 }) => {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const charsRef = useRef<HTMLElement[]>([]);
   const isIntroAnimating = useRef(true);
+  const infiniteTimelineRef = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
     if (!rootRef.current) return;
@@ -46,19 +49,39 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
 
     charsRef.current.forEach(c => {
       gsap.set(c, {
-        opacity: 0,
+        opacity: InfiniteScramble ? 1 : 0,
         display: 'inline-block',
         attr: { 'data-content': c.innerHTML }
       });
     });
 
-    const tl = gsap.timeline({
-        onComplete: () => {
-            isIntroAnimating.current = false;
-        }
-    });
+    const startInfiniteScramble = () => {
+      infiniteTimelineRef.current = gsap.timeline({
+          repeat: -1,
+          repeatDelay: -0.5
+      });
 
-    charsRef.current.forEach(c => {
+      charsRef.current.forEach((c, i) => {
+        infiniteTimelineRef.current!.to(c, {
+            duration: duration,
+            scrambleText: {
+              text: c.dataset.content || '',
+              chars: scrambleChars,
+              speed
+            },
+            ease: 'none'
+        }, i * 0.01);
+      });
+    };
+
+    if (!InfiniteScramble) {
+      const tl = gsap.timeline({
+          onComplete: () => {
+              isIntroAnimating.current = false;
+          }
+      });
+
+      charsRef.current.forEach(c => {
         tl.to(c, {
             duration,
             scrambleText: {
@@ -68,31 +91,39 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
             },
             ease: 'none'
         }, 0);
-    });
+      });
+    
 
-    const observer = new IntersectionObserver(
-        ([entry]) => {
-        if (!entry.isIntersecting) return;
+    
 
-        charsRef.current.forEach((c, i) => {
-            gsap.to(c, {
-            delay: i * 0.05,
-            opacity: 1,
-            duration,
-            scrambleText: {
-                text: c.dataset.content || '',
-                chars: scrambleChars,
-                speed
-            },
-            ease: 'none'
-            });
-        });
+      const observer = new IntersectionObserver(
+          ([entry]) => {
+          if (!entry.isIntersecting) return;
 
-        observer.disconnect();
-        },
-        { threshold: 0.3 }
-    );
-    observer.observe(rootRef.current);
+          charsRef.current.forEach((c, i) => {
+              gsap.to(c, {
+              delay: i * 0.05,
+              opacity: 1,
+              duration,
+              scrambleText: {
+                  text: c.dataset.content || '',
+                  chars: scrambleChars,
+                  speed
+              },
+              ease: 'none'
+              });
+          });
+
+          observer.disconnect();
+          },
+          { threshold: 0.3 }
+      );
+      observer.observe(rootRef.current);
+    } else {
+      isIntroAnimating.current = false;
+      startInfiniteScramble();
+    }
+
 
     const handleMove = (e: PointerEvent) => {
         if (isIntroAnimating.current) return;
@@ -127,9 +158,12 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
       if (!disableHover) {
         el.removeEventListener('pointermove', handleMove);
       }
+      if (infiniteTimelineRef.current) {
+        infiniteTimelineRef.current.kill();
+      }
       split.revert();
     };
-  }, [radius, duration, speed, scrambleChars]);
+  }, [radius, duration, speed, scrambleChars, InfiniteScramble]);
 
   return (
     <div ref={rootRef} className={`${className}`} style={style}>

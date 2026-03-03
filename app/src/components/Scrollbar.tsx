@@ -23,6 +23,9 @@ export default function Scrollbar({ containerRef, sectionIds }: Props) {
       const positions = sectionIds.map((id) => {
         const section = document.getElementById(id);
         if (!section) return 0;
+        if (section === document.getElementById("landing")) {
+          return 0;
+        }
         const scrollPercent = section.offsetTop / (scrollHeight - clientHeight);
         return scrollPercent * trackHeight;
       });
@@ -76,12 +79,20 @@ export default function Scrollbar({ containerRef, sectionIds }: Props) {
   };
 
   return (
-    <div className="custom-scrollbar" ref={trackRef}>
-      <div className="scrollbar-track" />
+    <div 
+      className={`custom-scrollbar ${activeSection === "landing" ? "hide" : ""}`}
+      ref={trackRef}
+    >
+      {/* <div className="scrollbar-track" /> */}
 
       <div
         className="scrollbar-thumb"
-        style={{ transform: `translateX(-50%) translateY(${thumbTop}px)` }}
+        style={{ 
+          transform: `
+            translateX(-50%) 
+            translateY(${thumbTop}px)
+            ` 
+          }}
       />
 
       {sectionIds.map((id, i) => (

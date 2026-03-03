@@ -8,13 +8,14 @@ import ScrambledText from "../wrappers/ScrambleTextWrapper";
 import "../styles/layout.css";
 
 export default function NavigationLinks() {
-  const { activeSection } = useScroll();
+  const { activeSection, setActiveSection } = useScroll();
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [boxStyle, setBoxStyle] = useState({ top: 0, height: 0, width: 0, opacity: 0 });
   const navRefs= useRef<HTMLAnchorElement| null[]>([]);
 
   const navItems = [
+    { href: "#landing", label: "Home", section: "landing" },
     { href: "#home", label: "About", section: "home" },
     { href: "#resume", label: "Resume", section: "resume" },
     { href: "#projects", label: "Projects", section: "projects" },
@@ -60,25 +61,25 @@ export default function NavigationLinks() {
           opacity: boxStyle.opacity
         }}
       />
-        {navItems.map((item, index) => (
-          <a 
-            key={item.section}
-            href={item.href}
-            ref={el => navRefs.current[index] = el}
-            onMouseEnter={() => setHoveredIndex(index)}
+      {navItems.map((item, index) => (
+        <a 
+          key={item.section}
+          href={item.href}
+          ref={el => navRefs.current[index] = el}
+          onMouseEnter={() => setHoveredIndex(index)}
+        >
+          <ScrambledText
+            className={`navText kode-mono ${activeSection === item.section ? "active" : ""}`}
+            radius={100}
+            duration={2}
+            speed={0.5}
+            scrambleChars=".:"
+            disableHover={true}
           >
-            <ScrambledText
-              className={`navText kode-mono ${activeSection === item.section ? "active" : ""}`}
-              radius={100}
-              duration={2}
-              speed={0.5}
-              scrambleChars=".:"
-              disableHover={true}
-            >
-              {item.label}
-            </ScrambledText>
-          </a>
-        ))}
+            {item.label}
+          </ScrambledText>
+        </a>
+      ))}
     </div>
   );
 }

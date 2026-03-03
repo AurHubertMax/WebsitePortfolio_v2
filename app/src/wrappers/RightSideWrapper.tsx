@@ -1,25 +1,26 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import Scrollbar from "../components/Scrollbar";
 import { useScroll } from "../contexts/ScrollContext";
+
 import "../../src/styles/wrappers.css";
 
 
 export default function RightSideWrapper({ children }: { children: React.ReactNode }) {
   const rightSideRef = useRef<HTMLDivElement>(null);
-  const { setActiveSection } = useScroll();
+  const { activeSection,setActiveSection } = useScroll();
 
   useEffect(() => {
     const container = rightSideRef.current;
     if (!container) return;
 
     const handleScroll = () => {
-      const sections = ["home", "resume", "projects", "contact"];
+      const sections = ["landing", "home", "resume", "projects", "contact"];
       const scrollTop = container.scrollTop;
       const viewportHeight = container.clientHeight;
       const scrollPosition = scrollTop + viewportHeight * 0.3;
 
-      let currentActive = "home";
+      let currentActive = "landing";
       sections.forEach((sectionId) => {
         const section = document.getElementById(sectionId);
         if (section && section.offsetTop <= scrollPosition) {
@@ -39,14 +40,16 @@ export default function RightSideWrapper({ children }: { children: React.ReactNo
     <>
       <Scrollbar
           containerRef={rightSideRef}
-          sectionIds={["home", "resume", "projects", "contact"]}
+          sectionIds={["landing", "home", "resume", "projects", "contact"]}
       />
-      <div className="right-side-container kode-mono" ref={rightSideRef}>
-          <div className="blur-top" />
-          <div className="content-wrapper">
-            {children}
-          </div>
-          <div className="blur-bottom" />
+      <div 
+        // className="right-side-container kode-mono" 
+        className={`right-side-container kode-mono ${activeSection === "landing" ? "hide-border" : ""}`}
+        ref={rightSideRef}
+      >
+        <div className="content-wrapper">
+          {children}
+        </div>
       </div>
     </>
   );
