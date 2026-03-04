@@ -24,9 +24,13 @@
     overflow-x: hidden;
     overflow-y: auto;
     scrollbar-width: none;
-    box-shadow: 0 0 0 0.5px rgba(var(--green-acc-medium), 1);
+    box-shadow: 0 0 0 0.5px rgba(var(--green-acc-medium), 0);
     padding: 2rem;
-    transition: opacity 1s ease;
+    transition: box-shadow 1s ease;
+}
+
+.right-side-container.visible {
+    box-shadow: 0 0 0 0.5px rgba(var(--green-acc-medium), 1);
 }
 
 

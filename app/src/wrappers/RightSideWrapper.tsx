@@ -44,7 +44,7 @@ export default function RightSideWrapper({ children }: { children: React.ReactNo
       />
       <div 
         // className="right-side-container kode-mono" 
-        className={`right-side-container kode-mono ${activeSection === "landing" ? "hide-border" : ""}`}
+        className={`right-side-container kode-mono ${activeSection !== "landing" ? "visible" : ""}`}
         ref={rightSideRef}
       >
         <div className="content-wrapper">
