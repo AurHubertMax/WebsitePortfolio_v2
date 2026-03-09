@@ -1,13 +1,13 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Fira+Code:wght@300..700&family=Lekton:ital,wght@0,400;0,700;1,400&family=Major+Mono+Display&family=Syncopate:wght@400;700&display=swap'); */
 
-:root {
+/* :root {
     --green-acc-light: 168, 207, 157;
     --green-acc-medium: 95, 136, 96;
     --green-acc-dark: 73, 106, 74;
 
     --white: 255, 255, 255;
     --black: 0, 0, 0;
-}
+} */
 
 .black-blur {
     background-color: rgba(var(--black), 0.1);
@@ -198,7 +198,8 @@
         conic-gradient(from 90deg  at top    var(--b) left  var(--b),var(--_g)) 0    0    / var(--_p),
         conic-gradient(from 180deg at top    var(--b) right var(--b),var(--_g)) 100% 0    / var(--_p),
         conic-gradient(from 0deg   at bottom var(--b) left  var(--b),var(--_g)) 0    100% / var(--_p),
-        conic-gradient(from -90deg at bottom var(--b) right var(--b),var(--_g)) 100% 100% / var(--_p);
+        conic-gradient(from -90deg at bottom var(--b) right var(--b),var(--_g)) 100% 100% / var(--_p),
+        rgba(var(--green-acc-light), 0.07);
 }
 
 .nav-selection-box::before {
@@ -243,7 +244,7 @@
         drop-shadow(0 0 12px rgba(var(--green-acc-light), 0.6))
         drop-shadow(0 0 20px rgba(var(--green-acc-light), 0.3));
 }
-
+/* 
 @keyframes pulse-glow {
     0%, 100% {
         text-shadow: 
@@ -325,4 +326,4 @@
     .short-name {
         display: block;
     }
-}
+} */

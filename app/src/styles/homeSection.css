@@ -1,14 +1,50 @@
-:root {
+/* :root {
     --green-acc-light: 168, 207, 157;
     --green-acc-medium: 95, 136, 96;
     --green-acc-dark: 73, 106, 74;
 
     --white: 255, 255, 255;
     --black: 0, 0, 0;
-}
+} */
 
 .home-wrapper {
     min-height: 100vh;
+}
+
+.pageTitle {
+    color: rgba(var(--yellow-acc-light), 0.6);
+    font-size: 2rem;
+    font-weight: 100;
+    font-style: normal;
+    letter-spacing: 0.15rem;
+    text-shadow: 0 0 10px rgba(var(--white), 0.7);
+    animation: pulse-glow-yellow 3s ease-in-out infinite;
+    text-wrap: nowrap;
+    text-align: right;
+    padding: 0 1rem;
+    width: fit-content;
+    margin-left: auto;
+}
+
+.selection-box-pageTitle {
+    /* position: absolute; */
+    left: -8px;
+    border-radius: 3px;
+    pointer-events: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --b: 3px;   /* thickness of the border */
+    --w: 13px;  /* width of border */
+    
+
+    border: var(--b) solid #0000;
+    --_g: #0000 90deg,rgba(var(--yellow-acc-light), 1) 0;
+    --_p: var(--w) var(--w) border-box no-repeat;
+    background:
+        conic-gradient(from 90deg  at top    var(--b) left  var(--b),var(--_g)) 0    0    / var(--_p),
+        conic-gradient(from 180deg at top    var(--b) right var(--b),var(--_g)) 100% 0    / var(--_p),
+        conic-gradient(from 0deg   at bottom var(--b) left  var(--b),var(--_g)) 0    100% / var(--_p),
+        conic-gradient(from -90deg at bottom var(--b) right var(--b),var(--_g)) 100% 100% / var(--_p),
+        rgba(var(--yellow-acc-light), 0.07);
 }
 
 .content-wrapper {
@@ -16,6 +52,7 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    padding-top: 1rem;
 }
 
 .paragraph {

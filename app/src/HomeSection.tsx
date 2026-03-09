@@ -3,12 +3,23 @@
 import ScrollScrambleText from "./wrappers/ScrollScrambleTextWrapper";
 
 import "./styles/homeSection.css";
+import ScrambledText from "./wrappers/ScrambleTextWrapper";
 
 export default function HomeSection() {
   return (
     <section id="home" className="home-wrapper">
       <div className="content-wrapper">
-        <div className="paragraph">
+        <ScrambledText
+          key="home-title"
+          className="pageTitle kode-mono selection-box-pageTitle"
+          radius={100}
+          duration={2}
+          speed={0.5}
+          scrambleChars=".:"
+        >
+          <span style={{ fontSize: "3rem" }}>A</span>bout
+        </ScrambledText>
+        <div className="pageParagraph">
           <ScrollScrambleText>
             I&apos;m a full-stack web developer currently working on a SaaS platform where I build and improve features using .NET, Angular, and SQL. My focus is on making the product more reliable and easier to use by creating new features, improving backend validation for booking and payment workflows, and building internal dashboards to surface unusual activity and data issues faster.
           </ScrollScrambleText>

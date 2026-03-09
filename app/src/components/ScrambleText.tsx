@@ -16,6 +16,7 @@ export interface ScrambledTextProps {
   style?: React.CSSProperties;
   disableHover?: boolean;
   InfiniteScramble?: boolean;
+  stagger?: number;
   children: React.ReactNode;
 }
 
@@ -28,6 +29,7 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
   style = {},
   disableHover = false,
   InfiniteScramble = false,
+  stagger = 0.05,
   children
 }) => {
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -70,7 +72,7 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
               speed
             },
             ease: 'none'
-        }, i * 0.01);
+        }, i * stagger);
       });
     };
 
@@ -163,7 +165,7 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
       }
       split.revert();
     };
-  }, [radius, duration, speed, scrambleChars, InfiniteScramble]);
+  }, [radius, duration, speed, scrambleChars, InfiniteScramble, stagger, disableHover]);
 
   return (
     <div ref={rootRef} className={`${className}`} style={style}>

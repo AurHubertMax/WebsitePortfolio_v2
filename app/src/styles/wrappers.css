@@ -1,11 +1,11 @@
-:root {
+/* :root {
     --green-acc-light: 168, 207, 157;
     --green-acc-medium: 95, 136, 96;
     --green-acc-dark: 73, 106, 74;
 
     --white: 255, 255, 255;
     --black: 0, 0, 0;
-}
+} */
 
 .kode-mono {
   font-family: "Kode Mono", monospace;
@@ -17,23 +17,22 @@
     display: flex;
     flex-direction: column;
     width: calc(50vw - 4rem);
-    height: calc(100vh - 8rem);
+    height: calc(100vh - 10rem);
     position: fixed;
-    top: 4rem;
+    top: 5rem;
     right: 4rem;
     overflow-x: hidden;
     overflow-y: auto;
     scrollbar-width: none;
     box-shadow: 0 0 0 0.5px rgba(var(--green-acc-medium), 0);
-    padding: 2rem;
+    padding: 0 2rem 2rem 2rem;
     transition: box-shadow 1s ease;
 }
 
 .right-side-container.visible {
-    box-shadow: 0 0 0 0.5px rgba(var(--green-acc-medium), 1);
+    /* box-shadow: 0 0 0 0.5px rgba(var(--green-acc-medium), 1); */
+    box-shadow: inset 0 0.5px 0 rgba(var(--green-acc-medium), 1), inset 0 -0.5px 0 rgba(var(--green-acc-medium), 1);
 }
-
-
 
 .right-side-container::-webkit-scrollbar {
     display: none;
@@ -44,34 +43,9 @@
     width: 100%;
 }
 
-.blur-top {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 8rem;
-    width: auto;
-    pointer-events: none;
-    z-index: 100;
-    background: rgba(var(--white), 0.8);
-}
-
-.blur-bottom {
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 8rem;
-    pointer-events: none;
-    z-index: 10;
-    background: linear-gradient(
-        to top,
-        rgba(var(--black), 1) 0%,
-        rgba(var(--black), 0.8) 25%,
-        rgba(var(--black), 0.5) 50%,
-        rgba(var(--black), 0.2) 75%,
-        rgba(var(--black), 0) 100%
-    );
+h1 {
+    font-size: 2rem;
+    letter-spacing: 0.15rem;
 }
 
 .custom-scrollbar {
@@ -184,30 +158,3 @@
   z-index: 1000;
 }
 
-@keyframes pulse-glow-scroll {
-    0%, 100% {
-        box-shadow: 
-            0 0 10px rgba(var(--green-acc-light), 0.6),
-            0 0 20px rgba(var(--green-acc-medium), 0.3),
-            0 0 30px rgba(var(--green-acc-dark), 0.1);
-        transform: translate(-50%, -50%) scale(1);
-    }
-    50% {
-        box-shadow: 
-            0 0 20px rgba(var(--green-acc-light), 1),
-            0 0 40px rgba(var(--green-acc-medium), 0.6),
-            0 0 60px rgba(var(--green-acc-dark), 0.3),
-            0 0 80px rgba(var(--green-acc-dark), 0.1);
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    .right-side-container {
-        width: calc(65vw - 4rem);
-    }
-
-    .custom-scrollbar {
-        left: calc(30vw);
-    }
-}

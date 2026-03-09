@@ -42,6 +42,7 @@ export default function ScrollScrambleText({ children }: { children: React.React
                 scrambleChars=".:"
                 disableHover={true}
                 InfiniteScramble={false} // CHANGE TO TRUE TO TEST
+                stagger={0}
             >
                 {children}
             </ScrambledText>
