@@ -14,7 +14,9 @@ export interface ScrambledTextProps {
   scrambleChars?: string;
   className?: string;
   style?: React.CSSProperties;
+  onVisible?: () => void;
   disableHover?: boolean;
+  randomHover?: boolean;
   InfiniteScramble?: boolean;
   stagger?: number;
   children: React.ReactNode;
@@ -27,6 +29,8 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
   scrambleChars = '.:',//'.:',
   className = '',
   style = {},
+  onVisible,
+  randomHover = false,
   disableHover = false,
   InfiniteScramble = false,
   stagger = 0.05,
@@ -35,6 +39,7 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
   const rootRef = useRef<HTMLDivElement | null>(null);
   const charsRef = useRef<HTMLElement[]>([]);
   const isIntroAnimating = useRef(true);
+  const randomTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const infiniteTimelineRef = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
@@ -77,11 +82,12 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
     };
 
     if (!InfiniteScramble) {
-      const tl = gsap.timeline({
-          onComplete: () => {
-              isIntroAnimating.current = false;
-          }
-      });
+      const tl = gsap.timeline();
+      // const tl = gsap.timeline({
+      //     onComplete: () => {
+      //         isIntroAnimating.current = false;
+      //     }
+      // });
 
       charsRef.current.forEach(c => {
         tl.to(c, {
@@ -104,7 +110,7 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
 
           charsRef.current.forEach((c, i) => {
               gsap.to(c, {
-              delay: i * 0.05,
+              delay: i * stagger,
               opacity: 1,
               duration,
               scrambleText: {
@@ -117,6 +123,12 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
           });
 
           observer.disconnect();
+          const totalDuration = (charsRef.current.length - 1) * stagger + duration;
+          gsap.delayedCall(totalDuration, () => {
+              isIntroAnimating.current = false;
+              if (randomHover) scheduleRandomScramble();
+          });
+          if (onVisible) onVisible();
           },
           { threshold: 0.3 }
       );
@@ -150,22 +162,46 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
         });
     };
 
+    const scheduleRandomScramble = () => {
+      const delay = 1000 + Math.random() * 10000;
+      randomTimeoutRef.current = setTimeout(() => {
+        const count = Math.max(1, Math.floor(charsRef.current.length * 0.05));
+        const shuffled = [...charsRef.current].sort(() => Math.random() - 0.5);
+        shuffled.slice(0, count).forEach(c => {
+          gsap.to(c, {
+            overwrite: true,
+            duration: duration * 0.6,
+            scrambleText: {
+              text: c.dataset.content || '',
+              chars: scrambleChars,
+              speed
+            },
+            ease: 'none'
+          });
+        });
+        scheduleRandomScramble();
+      }, delay);
+    };
+
     const el = rootRef.current;
-    if (!disableHover) {
+    if (!disableHover && !randomHover) {
       el.addEventListener('pointermove', handleMove);
     }
-   
 
     return () => {
-      if (!disableHover) {
+      if (!disableHover && !randomHover) {
         el.removeEventListener('pointermove', handleMove);
+      }
+      if (randomTimeoutRef.current) {
+        clearTimeout(randomTimeoutRef.current);
+        randomTimeoutRef.current = null;
       }
       if (infiniteTimelineRef.current) {
         infiniteTimelineRef.current.kill();
       }
       split.revert();
     };
-  }, [radius, duration, speed, scrambleChars, InfiniteScramble, stagger, disableHover]);
+  }, [radius, duration, speed, scrambleChars, InfiniteScramble, stagger, disableHover, randomHover, onVisible]);
 
   return (
     <div ref={rootRef} className={`${className}`} style={style}>

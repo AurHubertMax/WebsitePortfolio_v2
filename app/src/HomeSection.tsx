@@ -1,17 +1,21 @@
 "use client";
 
 import ScrollScrambleText from "./wrappers/ScrollScrambleTextWrapper";
+import ScrambledText from "./wrappers/ScrambleTextWrapper";
+import { useState } from "react";
 
 import "./styles/homeSection.css";
-import ScrambledText from "./wrappers/ScrambleTextWrapper";
 
 export default function HomeSection() {
+  const [titleVisible, setTitleVisible] = useState(false);
+  
   return (
     <section id="home" className="home-wrapper">
       <div className="content-wrapper">
         <ScrambledText
           key="home-title"
-          className="pageTitle kode-mono selection-box-pageTitle"
+          className={`pageTitle kode-mono${titleVisible ? ' selection-box-pageTitle' : ''}`}
+          onVisible={() => setTitleVisible(true)}
           radius={100}
           duration={2}
           speed={0.5}
@@ -19,13 +23,20 @@ export default function HomeSection() {
         >
           <span style={{ fontSize: "3rem" }}>A</span>bout
         </ScrambledText>
-        <div className="pageParagraph">
+        <div className="pageParagraph-container">
           <ScrollScrambleText>
-            I&apos;m a full-stack web developer currently working on a SaaS platform where I build and improve features using .NET, Angular, and SQL. My focus is on making the product more reliable and easier to use by creating new features, improving backend validation for booking and payment workflows, and building internal dashboards to surface unusual activity and data issues faster.
+            Hello, I&apos;m a Full-Stack Software Developer based in Kansas. I have a strong passion for designing frontend interfaces, crafting backend systems, and everything in between. I enjoy learning new technologies and am always looking for ways to expand my skill set.
           </ScrollScrambleText>
           <ScrollScrambleText>
-            Before this, I worked on a mix of engineering and volunteer projects that gave me experience across web development, cloud systems, and machine learning. I&apos;ve built React and Node.js features, automated data collection with web scrapers, trained neural networks for image classification, and worked with microservices and data pipelines in the cloud. I enjoy solving practical problems and building tools that are both useful and scalable.
+            Currently, I&apos;m working as a Software Engineer and QA Manager at PopBookings, where I get to work on developing and maintaining a SaaS platform for the event management industry. I&apos;m responsible for both frontend and backend development, as well as overseeing the QA process to ensure our software meets the highest standards of quality.
           </ScrollScrambleText>
+          <ScrollScrambleText>
+            Looking ahead, I&apos;m excited to keep growing as a developer and tackling new challenges that expand my skills. I&apos;m particularly interested in diving deeper into cloud computing and learning how it can be combined with modern software development to build scalable, impactful, and innovative solutions.
+          </ScrollScrambleText>
+           <ScrollScrambleText>
+            Besides work, I like to work on personal projects, explore new technologies, play video games, or go weightlifting. I&apos;m always excited to connect with other developers, gamers, and weightlifting enthusiasts to share ideas and knowledge, so feel free to reach out if you&apos;d like to chat about software development or anything tech-related!
+          </ScrollScrambleText>
+
         </div>
 
         <div className="skills">

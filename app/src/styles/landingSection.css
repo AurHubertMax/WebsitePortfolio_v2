@@ -19,6 +19,7 @@
     border-radius: 3px;
     pointer-events: none;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: selection-box-enter 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     --b: 3px;   /* thickness of the border */
     --w: 13px;  /* width of border */
     
@@ -32,4 +33,15 @@
         conic-gradient(from 0deg   at bottom var(--b) left  var(--b),var(--_g)) 0    100% / var(--_p),
         conic-gradient(from -90deg at bottom var(--b) right var(--b),var(--_g)) 100% 100% / var(--_p),
         rgba(var(--yellow-acc-light), 0.07);
+}
+
+@keyframes selection-box-enter {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }

@@ -1,12 +1,3 @@
-/* :root {
-    --green-acc-light: 168, 207, 157;
-    --green-acc-medium: 95, 136, 96;
-    --green-acc-dark: 73, 106, 74;
-
-    --white: 255, 255, 255;
-    --black: 0, 0, 0;
-} */
-
 .home-wrapper {
     min-height: 100vh;
 }
@@ -17,7 +8,7 @@
     font-weight: 100;
     font-style: normal;
     letter-spacing: 0.15rem;
-    text-shadow: 0 0 10px rgba(var(--white), 0.7);
+    text-shadow: 0 0 10px rgba(var(--yellow-acc-light), 0.7);
     animation: pulse-glow-yellow 3s ease-in-out infinite;
     text-wrap: nowrap;
     text-align: right;
@@ -32,6 +23,7 @@
     border-radius: 3px;
     pointer-events: none;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: selection-box-enter 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     --b: 3px;   /* thickness of the border */
     --w: 13px;  /* width of border */
     
@@ -68,4 +60,16 @@ p {
 
 span {
     font-weight: 700;
+}
+
+
+@keyframes selection-box-enter {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }

@@ -81,7 +81,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: calc(45vw - 5rem);
+    width: calc(35vw - 5rem);
     height: calc(100vh - 10rem);
     position: fixed;
     top: 5rem;
@@ -244,42 +244,9 @@
         drop-shadow(0 0 12px rgba(var(--green-acc-light), 0.6))
         drop-shadow(0 0 20px rgba(var(--green-acc-light), 0.3));
 }
-/* 
-@keyframes pulse-glow {
-    0%, 100% {
-        text-shadow: 
-            0 0 8px rgba(var(--green-acc-light), 0.6),
-            0 0 20px rgba(var(--green-acc-light), 0.3);
-    }
-    50% {
-        text-shadow: 
-            0 0 15px rgba(var(--green-acc-light), 0.9),
-            0 0 40px rgba(var(--green-acc-light), 0.5),
-            0 0 60px rgba(var(--green-acc-light), 0.2);
-    }
-}
 
-@keyframes pulse-glow-nav {
-    0%, 100% {
-        text-shadow: 
-            0 0 15px rgba(var(--green-acc-light), 1),
-            0 0 30px rgba(var(--green-acc-light), 0.8),
-            0 0 60px rgba(var(--green-acc-light), 0.5),
-            0 0 70px rgba(var(--green-acc-light), 0.2);
-        transform: skewX(-10deg);
-        
-    }
-    50% {
-        text-shadow: 
-            0 0 25px rgba(var(--green-acc-light), 1),
-            0 0 50px rgba(var(--green-acc-light), 0.9),
-            0 0 80px rgba(var(--green-acc-light), 0.7),
-            0 0 120px rgba(var(--green-acc-light), 0.5),
-            0 0 160px rgba(var(--green-acc-light), 0.3);
-    }
-}
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1600px) {
     .navTitle {
         font-size: 1.5rem;
         letter-spacing: 0.1rem;
@@ -297,8 +264,11 @@
         top: 4rem;
         left: 4rem;
     }
+    .social-media-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
 }
-
 
 @media screen and (max-width: 1200px) {
     .header {
@@ -318,7 +288,10 @@
         font-size: 0.8rem;
         letter-spacing: 0.05rem;
     }
-
+    h1 {
+        font-size: 1.2rem;
+        letter-spacing: 0.05rem;
+    }
     .full-name {
         display: none;
     }
@@ -326,4 +299,8 @@
     .short-name {
         display: block;
     }
-} */
+    .social-media-icon {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+}

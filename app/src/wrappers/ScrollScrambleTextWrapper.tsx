@@ -36,44 +36,16 @@ export default function ScrollScrambleText({ children }: { children: React.React
         <>
             <ScrambledText
                 className=""
-                radius={100}
+                radius={10}
                 duration={2}
-                speed={0.5}
+                speed={10}
                 scrambleChars=".:"
-                disableHover={true}
-                InfiniteScramble={false} // CHANGE TO TRUE TO TEST
-                stagger={0}
+                disableHover={false}
+                randomHover={true}
+                stagger={0.01}
             >
                 {children}
             </ScrambledText>
         </>
-    )
-//   const [shouldScramble, setShouldScramble] = useState(false);
-//   const elementRef = useRef<HTMLDivElement>(null);
-
-//   useEffect(() => {
-//     const element = elementRef.current;
-//     if (!element) return;
-
-//     const scrollContainer = element.closest('.right-side-container');
-//     setShouldScramble(!!scrollContainer);
-//   }, []);
-
-//   return (
-//     <div ref={elementRef}>
-//       {shouldScramble ? (
-//         <ScrambledText 
-//             radius={100}
-//             duration={Infinity}
-//             speed={0.5}
-//             scrambleChars=".:"
-//             disableHover={true}
-//         >
-//           {children}
-//         </ScrambledText>
-//       ) : (
-//         children
-//       )}
-//     </div>
-//   );
+    );
 }

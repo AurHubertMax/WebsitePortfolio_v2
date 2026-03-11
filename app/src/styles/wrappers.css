@@ -16,7 +16,7 @@
 .right-side-container {
     display: flex;
     flex-direction: column;
-    width: calc(50vw - 4rem);
+    width: calc(60vw - 4rem);
     height: calc(100vh - 10rem);
     position: fixed;
     top: 5rem;
@@ -51,7 +51,7 @@ h1 {
 .custom-scrollbar {
     position: fixed;
     top: 10rem;
-    left: calc(50vw - 4rem);
+    left: calc(40vw);
     height: calc(100vh - 20rem);
     width: 12px;
     display: flex;
@@ -157,4 +157,3 @@ h1 {
   pointer-events: none;
   z-index: 1000;
 }
-
