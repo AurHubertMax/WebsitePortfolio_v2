@@ -49,8 +49,9 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
     if (!p) return;
 
     const split = SplitText.create(p, {
-      type: 'chars',
-      charsClass: 'char'
+      type: 'words,chars',
+      charsClass: 'char',
+      wordsClass: 'word'
     });
     charsRef.current = split.chars as HTMLElement[];
 
@@ -163,9 +164,9 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
     };
 
     const scheduleRandomScramble = () => {
-      const delay = 1000 + Math.random() * 10000;
+      const delay = 3000 + Math.random() * 1000;
       randomTimeoutRef.current = setTimeout(() => {
-        const count = Math.max(1, Math.floor(charsRef.current.length * 0.05));
+        const count = Math.max(1, Math.floor(charsRef.current.length * 0.3));
         const shuffled = [...charsRef.current].sort(() => Math.random() - 0.5);
         shuffled.slice(0, count).forEach(c => {
           gsap.to(c, {

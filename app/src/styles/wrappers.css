@@ -43,6 +43,11 @@
     width: 100%;
 }
 
+.word {
+    display: inline-block;
+    white-space: nowrap;
+}
+
 h1 {
     font-size: 2rem;
     letter-spacing: 0.15rem;
@@ -50,9 +55,9 @@ h1 {
 
 .custom-scrollbar {
     position: fixed;
-    top: 10rem;
-    left: calc(40vw);
-    height: calc(100vh - 20rem);
+    top: 6rem;
+    left: calc(40vw - 3rem);
+    height: calc(100vh - 11rem);
     width: 12px;
     display: flex;
     align-items: center;
@@ -85,8 +90,8 @@ h1 {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 6px;
-    height: 16px;
+    width: 4px;
+    height: 13px;
     background: rgba(var(--green-acc-light), 1);
     border-radius: 3px;
     box-shadow: 0 0 6px rgba(var(--green-acc-light), 0.8);
@@ -98,10 +103,10 @@ h1 {
 .scrollbar-node {
     position: absolute;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
     background: transparent;
     border: 1px solid rgba(var(--green-acc-light), 0.5);
     cursor: pointer;

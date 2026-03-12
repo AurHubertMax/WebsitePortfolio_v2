@@ -6,6 +6,7 @@
   --green-acc-light: 168, 207, 157;
   --green-acc-medium: 95, 136, 96;
   --green-acc-dark: 73, 106, 74;
+  --green-acc-darker: 55, 78, 56;
 
   --yellow-acc-light: 240, 190, 50;
 
@@ -92,7 +93,7 @@ body {
             0 0 10px rgba(var(--green-acc-light), 0.6),
             0 0 20px rgba(var(--green-acc-medium), 0.3),
             0 0 30px rgba(var(--green-acc-dark), 0.1);
-        transform: translate(-50%, -50%) scale(1);
+        /* transform: translate(-50%, -50%) rotate(45deg) scale(1); */
     }
     50% {
         box-shadow: 
@@ -100,6 +101,6 @@ body {
             0 0 40px rgba(var(--green-acc-medium), 0.6),
             0 0 60px rgba(var(--green-acc-dark), 0.3),
             0 0 80px rgba(var(--green-acc-dark), 0.1);
-        transform: translate(-50%, -50%) scale(1.1);
+        /* transform: translate(-50%, -50%) rotate(45deg) scale(1.1); */
     }
 }

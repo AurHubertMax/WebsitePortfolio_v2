@@ -51,6 +51,7 @@ export default function RootLayout({
                     className="navTitle kode-mono black-blur full-name"
                     radius={100}
                     duration={2}
+                    randomHover={true}
                     speed={0.5}
                     scrambleChars=".:"
                   >
@@ -62,6 +63,7 @@ export default function RootLayout({
                     duration={2}
                     speed={0.5}
                     scrambleChars=".:"
+                    randomHover={true}
                   >
                     <span style={{ fontSize: "3rem" }}>A</span>.<span style={{ fontSize: "3rem" }}>H</span>.<span style={{ fontSize: "3rem" }}>M</span>.
                   </ScrambledText>
@@ -72,6 +74,7 @@ export default function RootLayout({
                     duration={2}
                     speed={0.5}
                     scrambleChars=".:"
+                    randomHover={true}
                   >
                     Software Engineer • Full Stack Software Developer
                   </ScrambledText>
@@ -82,6 +85,7 @@ export default function RootLayout({
                     duration={2}
                     speed={0.5}
                     scrambleChars=".:"
+                    randomHover={true}
                   >
                     Software Engineer
                   </ScrambledText>

@@ -5,22 +5,17 @@ import ScrambledText from '../components/ScrambleText';
 export default function ScrollScrambleText({ children }: { children: React.ReactNode }) {
 
     const getTextContent = (node: React.ReactNode): string => {
-        // Handle null/undefined
         if (node == null) return '';
         
-        // Handle strings and numbers
         if (typeof node === 'string' || typeof node === 'number') {
             return String(node);
         }
         
-        // Handle arrays
         if (Array.isArray(node)) {
             return node.map(getTextContent).join('');
         }
         
-        // Handle React elements (objects with props)
         if (typeof node === 'object' && 'props' in node && node.props) {
-            // If it has children prop, recursively extract from children
             if ('children' in node.props) {
                 return getTextContent(node.props.children);
             }
@@ -36,12 +31,11 @@ export default function ScrollScrambleText({ children }: { children: React.React
         <>
             <ScrambledText
                 className=""
-                radius={10}
+                radius={20}
                 duration={2}
                 speed={10}
                 scrambleChars=".:"
-                disableHover={false}
-                randomHover={true}
+                randomHover={false}
                 stagger={0.01}
             >
                 {children}
