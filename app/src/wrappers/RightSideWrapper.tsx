@@ -8,7 +8,12 @@ import "../../src/styles/wrappers.css";
 
 export default function RightSideWrapper({ children }: { children: React.ReactNode }) {
   const rightSideRef = useRef<HTMLDivElement>(null);
-  const { activeSection,setActiveSection } = useScroll();
+  const { activeSection, setActiveSection, scrollContainerRef, setScrollContainer } = useScroll();
+
+  useEffect(() => {
+    scrollContainerRef.current = rightSideRef.current;
+    setScrollContainer(rightSideRef.current);
+  }, []);
 
   useEffect(() => {
     const container = rightSideRef.current;

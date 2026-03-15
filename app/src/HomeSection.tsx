@@ -37,37 +37,47 @@ export default function HomeSection() {
           <span style={{ fontSize: "3rem" }}>A</span>bout
         </ScrambledText>
         <div className="body-content-wrapper">
-          <div className="skills-container"> 
-            <DataBox title="SKILLS" icon={skills_svg} subtitle={subtitle_text} content={
-              <ul className="skills-list">
-                <li><ScrollScrambleText><span>Languages</span> C# • Python • JavaScript • TypeScript • SQL • HTML/CSS</ScrollScrambleText></li>
-                <li><ScrollScrambleText><span>Frameworks</span> dotNET • React • Angular • Node.js</ScrollScrambleText></li>
-              </ul>
-            } />
-
-            {/* <ScrollScrambleText>
-              SKILLS:
-            </ScrollScrambleText>
-            <ul className="skills-list">
-              <li><ScrollScrambleText><span>Languages</span> C# • Python • JavaScript • TypeScript • SQL • HTML/CSS</ScrollScrambleText></li>
-              <li><ScrollScrambleText><span>Frameworks</span> dotNET • React • Angular • Node.js</ScrollScrambleText></li>
-              <li><ScrollScrambleText><span>Tools</span> Git • Azure • AWS • AG Grid • Docker • RabbitMQ • PyTorch</ScrollScrambleText></li>
-            </ul> */}
-          </div>
           <div className="pageParagraph-container">
             <ScrollScrambleText>
-              Hello, I&apos;m a Full-Stack Software Developer based in Kansas. I have a strong passion for designing frontend interfaces, crafting backend systems, and everything in between. I enjoy learning new technologies and am always looking for ways to expand my skill set.
+              Hello! I&apos;m a <span>Full-Stack Software Developer</span> based in Kansas who enjoys building frontend interfaces, backend systems, and everything in between. I&apos;m always learning new technologies and looking for ways to grow my skill set.
             </ScrollScrambleText>
             <ScrollScrambleText>
-              Currently, I&apos;m working as a Software Engineer and QA Manager at PopBookings, where I get to work on developing and maintaining a SaaS platform for the event management industry. I&apos;m responsible for both frontend and backend development, as well as overseeing the QA process to ensure our software meets the highest standards of quality.
+              Currently, I work as a Software Engineer and QA Manager at <span>PopBookings</span>, where I help build and maintain a SaaS platform for the event management industry, handling both development and QA.
             </ScrollScrambleText>
-            {/* <ScrollScrambleText>
-              Looking ahead, I&apos;m excited to keep growing as a developer and tackling new challenges that expand my skills. I&apos;m particularly interested in diving deeper into cloud computing and learning how it can be combined with modern software development to build scalable, impactful, and innovative solutions.
-            </ScrollScrambleText> */}
             <ScrollScrambleText>
-              Besides work, I like to work on personal projects, play video games, or go weightlifting. I&apos;m always excited to connect with others that share my interests, so feel free to reach out if you&apos;d like to chat about software development or anything tech-related!
+              Outside of work, I like working on personal projects, playing video games, and weightlifting. I&apos;m always happy to connect with others who are into tech or development!
             </ScrollScrambleText>
 
+          </div>
+          <div className="skills-container"> 
+            <DataBox title="SKILLS" icon={skills_svg} subtitle={subtitle_text} rootMargin="-250px 0px -250px 0px" content={
+              <div className="skills-list">
+                <span className="skill-label">Languages</span>
+                <div className="skill-container">
+                  <div className="skill">C#</div>
+                  <div className="skill">JavaScript</div>
+                  <div className="skill">TypeScript</div>
+                  <div className="skill">SQL</div>
+                  <div className="skill">HTML/CSS</div>
+                </div>
+                <span className="skill-label">Frameworks</span>
+                <div className="skill-container">
+                  <div className="skill">.NET</div>
+                  <div className="skill">React</div>
+                  <div className="skill">Angular</div>
+                  <div className="skill">Node.js</div>
+                </div>
+                <span className="skill-label">Tools</span>
+                <div className="skill-container">
+                  <div className="skill">Git</div>
+                  <div className="skill">Azure</div>
+                  <div className="skill">AWS</div>
+                  <div className="skill">AG Grid</div>
+                  <div className="skill">Docker</div>
+                  <div className="skill">PyTorch</div>
+                </div>
+              </div>
+            } />
           </div>
         </div>
       </div>

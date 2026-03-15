@@ -1,10 +1,11 @@
 
 
 .dataBox-container {
-    /* box-shadow: inset 0 0.5px 0 rgba(var(--green-acc-medium), 1), inset 0 -0.5px 0 rgba(var(--green-acc-medium), 1); */
-    box-shadow: 0 0 0 0.5px rgba(var(--green-acc-medium), 1);
+    outline: 0.5px solid rgba(var(--green-acc-medium), 1);
     opacity: 0;
     transform: scale(0.85);
+    width: 100%;
+    height: 100%;
 }
 
 .dataBox-container.entering {
@@ -13,6 +14,7 @@
 
 .dataBox-container.exiting {
     animation: selection-box-exit 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
 }
 
 .title-container {
@@ -21,7 +23,7 @@
     justify-content: flex-start;
     align-items: center;
     border-bottom: 0.5px solid rgba(var(--green-acc-medium), 1);
-    background: linear-gradient(to right, rgba(var(--green-acc-darker), 0), rgba(var(--green-acc-darker), 1));
+    background: linear-gradient(to right, rgba(var(--black), 0.5), rgba(var(--green-acc-darker), 0.7));
     padding: 0.5rem;
     gap: 1rem;
 }
@@ -44,7 +46,8 @@
 }
 
 .content-container {
-    padding: 1rem;
+    padding: 0.3rem 0.5rem;
+    background: rgba(var(--black), 0.3);
 }
 
 @keyframes selection-box-enter {

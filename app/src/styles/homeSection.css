@@ -1,5 +1,6 @@
 .home-wrapper {
-    min-height: 100vh;
+    min-height: 50vh;
+    margin-bottom: 10rem;
 }
 
 .pageTitle {
@@ -50,18 +51,34 @@
 .skills-container {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    flex-shrink: 0;
+    width: fit-content;
+    align-self: center;
 }
 
 .skills-list {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    row-gap: 0.75rem;
+    align-items: start;
+}
+
+.skill-label {
+    font-weight: 700;
+    color: rgba(var(--green-acc-light), 0.6);
+    font-size: 0.8rem;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    padding-right: 1rem;
+    padding-top: 0.15rem;
+    white-space: nowrap;
 }
 
 .body-content-wrapper {
     /* background-color: red; */
     display: flex;
-    flex-direction: row;
-    gap: 4rem;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .pageParagraph-container {
@@ -69,16 +86,61 @@
     flex-direction: column;
     gap: 1.5rem;
     line-height: 1.5rem;
-    width: 70%;
+    /* width: 50%; */
     /* background-color: white; */
 }
 
 p {
-    font-weight: 300;
+    font-weight: 400;
 }
 
 span {
     font-weight: 700;
+}
+
+.pageParagraph-container span{
+    color: rgba(var(--yellow-acc-light), 1);
+}
+
+
+.skill-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    column-gap: 0.5rem;
+    row-gap: 0.4rem;
+}
+
+.skill {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(var(--green-acc-light), 0.5);
+    border-radius: 5px;
+    font-weight: 600;
+    padding: 0 0.75rem;
+    cursor: pointer;
+    transition: color 0.1s ease, border-color 0.1s ease;
+}
+
+.skill::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(var(--green-acc-light), 1);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.1s ease;
+    z-index: -1;
+}
+
+.skill:hover::before {
+    transform: scaleY(1);
+}
+
+.skill:hover {
+    color: rgba(var(--black), 1);
+    border-color: rgba(var(--green-acc-light), 1);
 }
 
 
