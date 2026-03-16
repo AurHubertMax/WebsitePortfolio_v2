@@ -1,9 +1,10 @@
 "use client";
 
-import ScrollScrambleText from "./wrappers/ScrollScrambleTextWrapper";
 import ScrambledText from "./wrappers/ScrambleTextWrapper";
-import DataBox from "./components/DataBox";
+import FadeInView from "./components/FadeInView";
 import { useState } from "react";
+import { BorderBeam } from "@stianlarsen/border-beam";
+import "@stianlarsen/border-beam/css";
 
 import "./styles/resumeSection.css";
 
@@ -23,6 +24,7 @@ const popbookings_svg =
 
 export default function ResumeSection() {
   const [titleVisible, setTitleVisible] = useState(false);
+  const [resumeHovered, setResumeHovered] = useState(false);
 
   return (
     <section id="resume" className="resume-wrapper">
@@ -40,21 +42,38 @@ export default function ResumeSection() {
           <span style={{ fontSize: "3rem" }}>E</span>xperience
         </ScrambledText> 
         <div className="body-content-wrapper">
-          <div className="row-container">
+          <FadeInView rootMargin="-100px 0px -200px 0px">
+            <div className="row-container">
             <div className="dates-container">
               2025 - Present
             </div>
             <div className="lines-container">
               <div className="line-container-1"></div>
-              <div className="line-container-2"></div>
+              {/* <div className="line-container-2"></div> */}
             </div>
-            <div className="resume-container">
+            <div className="resume-container"
+              onMouseEnter={() => setResumeHovered(true)}
+              onMouseLeave={() => setResumeHovered(false)}
+            >
+              {resumeHovered && (
+                <BorderBeam 
+                  colorFrom="rgba(var(--green-acc-medium), 0.4)"
+                  colorTo="rgba(var(--green-acc-medium), 0.1)"
+                  duration={2}
+                  size={100}
+                  anchor={90}
+                  borderWidth={2}
+                />
+              
+              )}
+              {/* <span className="resume-border-left" />
+              <span className="resume-border-right" /> */}
               <div className="resume-title-container">
                 <div className="resume-item-title">
                   PopBookings
                 </div>
                 <div className="resume-item-title-subtitle">
-                  Software Developr
+                  Software Developer
                 </div>
               </div>
 
@@ -63,6 +82,7 @@ export default function ResumeSection() {
               </div>
             </div>
           </div>
+          </FadeInView>
           
         </div>
       </div>

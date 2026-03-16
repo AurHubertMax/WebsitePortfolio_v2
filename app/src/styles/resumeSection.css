@@ -3,6 +3,17 @@
     margin-bottom: 10rem;
 }
 
+.fade-in-view {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in-view--visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .pageTitle {
     color: rgba(var(--yellow-acc-light), 0.6);
     font-size: 2rem;
@@ -65,6 +76,7 @@
     font-size: 0.75rem;
     color: rgba(var(--green-acc-light), 0.7);
     padding-top: 0.4rem;
+    padding-right: 1rem;
     white-space: nowrap;
     display: flex;
     justify-self: flex-end;
@@ -78,7 +90,7 @@
 }
 
 /* pulse going UP from corner */
-.lines-container::before {
+/* .lines-container::before {
     content: '';
     position: absolute;
     right: -1px;
@@ -90,10 +102,10 @@
     filter: blur(1px);
     opacity: 0;
     animation: data-flow-up 1.5s ease-out infinite;
-}
+} */
 
 /* pulse going DOWN from corner */
-.lines-container::after {
+/* .lines-container::after {
     content: '';
     position: absolute;
     right: -1px;
@@ -105,25 +117,53 @@
     filter: blur(1px);
     opacity: 0;
     animation: data-flow-down 1.5s ease-out infinite;
-}
+} */
 
-.line-container-1 {
+/* .line-container-1 {
     width: 100%;
     height: 50%;
     align-self: flex-start;
     border-right: 1px solid rgba(var(--green-acc-medium), 0.4);
-}
+} */
 
-.line-container-2 {
+/* .line-container-2 {
     position: relative;
     width: 100%;
     height: 50%;
     border-right: 1px solid rgba(var(--green-acc-medium), 0.4);
     border-top: 1px solid rgba(var(--green-acc-medium), 0.4);
+} */
+
+.line-container-1 {
+    width: 100%;
+    height: 50%;
+    align-self: flex-start;
+    justify-self: flex-start;
+    border-bottom: 2px solid rgba(var(--green-acc-medium), 0.4);
+    animation: pulse-glow-border 2s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.line-container-1::before {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(to right, transparent, rgba(var(--green-acc-light), 0.9));
+    border-radius: 2px;
+    filter: blur(1px);
+    opacity: 0;
+}
+
+.row-container:has(.resume-container:hover) .line-container-1::before {
+    animation: draw-horizontal 1.5s ease-in-out infinite;
 }
 
 /* Horizontal sweep left to right */
-.line-container-2::before {
+/* .line-container-2::before {
     content: '';
     position: absolute;
     top: -1.5px;
@@ -134,7 +174,7 @@
     border-radius: 2px;
     filter: blur(1px);
     animation: draw-horizontal 1.5s ease-in-out infinite;
-}
+} */
 
 @keyframes draw-horizontal {
     0%   { width: 0;    opacity: 0;   }
@@ -163,8 +203,48 @@
     flex-direction: column;
     gap: 1rem;
     background-color: rgba(var(--black), 0.3);
-    padding: 0.5rem;
+    padding: 1rem;
     border-radius: 30px;
+    /* border-left: 2px solid rgba(var(--green-acc-medium), 0.4); */
+    animation: pulse-glow-border 2s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.resume-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgba(var(--green-acc-light), 0.9), transparent);
+    filter: blur(1px);
+    border-radius: 2px;
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.resume-container:hover::before {
+    animation: resume-border-sweep 2s ease-in-out infinite;
+}
+
+.resume-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgba(var(--green-acc-light), 0.9), transparent);
+    filter: blur(1px);
+    border-radius: 2px;
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.resume-container:hover::after {
+    animation: resume-border-sweep 2s ease-in-out infinite;
 }
 
 .resume-title-container {
@@ -189,7 +269,7 @@
 .row-container {
     display: grid;
     grid-template-columns: 1.5fr 1fr 5fr;
-    gap: 1rem;
+    /* gap: 1rem; */
     align-items: center;
 }
 

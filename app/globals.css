@@ -52,6 +52,15 @@ body {
     }
 }
 
+@keyframes pulse-glow-border {
+    0%, 100% {
+        border-color: rgba(var(--green-acc-medium), 0.15);
+    }
+    50% {
+        border-color: rgba(var(--green-acc-medium), 0.3);
+    }
+}
+
 @keyframes pulse-glow-yellow {
     0%, 100% {
         text-shadow: 
